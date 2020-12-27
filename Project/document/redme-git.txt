@@ -1,0 +1,40 @@
+0. see https://www.keil.com/appnotes/docs/apnt_279.asp
+	a. Dowload and Install git: https://gitforwindows.org/
+	b. Dowload and Install keil5.15 or higher
+	c. create your uVision project
+	d. Configure uVision's SVCS:
+		- Go to SVCS uVision's menue => Configure Software Version Control... => Enter the path to the template file: C:\Keil_v5\UV4\GIT.SVCS
+			- When done, press OK. Now, uVision is ready to use Git as the version control system.
+	d. Version Control of Software Packs (it is highly recommended)
+		- Go to uVision's "Select Software Packs..." icon
+		- Uncheck Use latest versions of all installed Software Packs
+	e. Create a repository: We need a "remote repository" to push our project to it or clone from it and ...
+		- For example we could create an acount in "https://github.com/" (for example "moini87" account) and select a "New repository" in our account's "+" menue => like "https://github.com/moini87/STM32F407-Git-Example"
+
+1. Initialize and first git commit
+	- Open your project directory in Windows explorer and type cmd in the address bar of Windows explorer and hit enter.
+		- git init
+		- git remote add origin https://github.com/moini87/STM32F407-Git-Example
+		- It is recomended first delete "Listings" & "Objects" didectory, as well as "Project.uvguix.YourUserName" because these files do not need to be monitored
+		- git add *
+		- git commit -m "Initial version"
+		- git push -u origin master
+
+2. Clone a Repository from a Server
+	- Open your arbitrary empty directory in Windows explorer and type cmd in the address bar of Windows explorer and hit enter.
+	- type this in cmd: "git clone https://github.com/moini87/STM32F407-Git-Example"
+
+3. Feature Work: Go to SVCS uVision's menue =>
+	- Status
+	- Stage (add new file or stage a chenged file), 
+	- Removing a Tracked File:
+		+ Close the file in the Editor window
+		+ In the Project window, right-click on the file and select Remove File eMyFile.c
+		+ Switch to your Windows command shell, go to the filefs directory and issue the command "git rm MyFile.c"
+	- Committing Changes:
+		+ Before issuing the git commit command, check the project for unstaged files.
+		+ A commit will only accept staged files.
+		+ Any created or modified files which have not yet been staged wonft go into this commit. They will remain modified on the hard disk.
+	- Pushing to the Repository:
+		+ git push [remote-name] [branch-name] => git push https://github.com/moini87/STM32F407-Git-Example master
+
